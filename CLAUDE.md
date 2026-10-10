@@ -37,6 +37,7 @@ El enunciado completo está en @docs/ENUNCIADO.md — es la fuente de verdad. Si
 - **Ningún comando `dotnet`, `npm`/`npx` ni `docker`:** ni build, ni test, ni restore, ni run, ni ef. Todo lo ejecuta el usuario. Claude solo escribe/edita archivos y entrega los comandos exactos para que el usuario los corra y le comparta la salida si hay errores.
 - **No levantar el sistema:** Claude no ejecuta `dotnet run`, `dotnet watch`, `npm run dev`, `npm start`, `docker compose up`, `docker run` ni nada que arranque la API, el frontend o la base de datos.
 - **No instalar librerías ni herramientas:** Claude no ejecuta `dotnet add package`, `dotnet tool install`, `npm install`/`npm i`, `npx` que descargue paquetes, ni `docker pull`/`docker build`. Cuando se necesite un paquete, Claude indica el comando exacto (paquete + versión + proyecto) y el usuario lo ejecuta.
+- **Git: commits y push SOLO los hace el usuario.** Claude nunca ejecuta `git add`, `git commit`, `git push`, `git reset`, `git checkout`, `git merge` ni nada que modifique el repositorio o el remoto. Claude solo propone el mensaje de commit y puede usar comandos de lectura (`git status`, `git log`, `git diff`) para revisar.
 - **Migraciones EF:** Claude escribe el código (DbContext, configuraciones) e indica el comando `dotnet ef migrations add ...`; el usuario lo ejecuta. Claude nunca ejecuta `dotnet ef database update`.
 - Claude sí puede editar archivos de proyecto (`.csproj`, `package.json`) cuando el usuario lo pida, pero la instalación/restauración la hace el usuario.
 
@@ -45,7 +46,7 @@ El enunciado completo está en @docs/ENUNCIADO.md — es la fuente de verdad. Si
 - No hacer cambios arquitectónicos grandes, migraciones destructivas ni borrar archivos sin preguntar.
 - Toda lógica de torneo (puntos, diferencia de gol, orden de tabla) debe tener pruebas unitarias.
 - Al terminar cada bloque, explicar brevemente qué se hizo y por qué.
-- Commits pequeños con mensajes claros en español.
+- Commits pequeños con mensajes claros en español (Claude los sugiere; el usuario los ejecuta).
 - Responder en español.
 
 ## Comandos (todos los ejecuta SOLO el usuario)
