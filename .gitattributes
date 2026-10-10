@@ -1,0 +1,24 @@
+# Normaliza saltos de línea a LF en el repositorio
+* text=auto eol=lf
+
+# Archivos de Windows / Visual Studio con CRLF
+*.sln      text eol=crlf
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+*.ps1      text eol=crlf
+
+# Scripts y archivos que corren dentro de contenedores Linux: siempre LF
+*.sh       text eol=lf
+Dockerfile text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+
+# Binarios
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary

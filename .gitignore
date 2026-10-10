@@ -1,0 +1,60 @@
+# =========================
+# Secretos / entorno
+# =========================
+.env
+.env.*
+!.env.example
+*.pfx
+*.pem
+
+# =========================
+# .NET
+# =========================
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TestResults/
+*.trx
+coverage*.json
+coverage*.xml
+*.coverage
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+appsettings.*.local.json
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.DotSettings.user
+
+# =========================
+# Node / Next.js
+# =========================
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vercel
+
+# =========================
+# Docker / datos locales
+# =========================
+mssql-data/
+
+# =========================
+# Sistema operativo
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini

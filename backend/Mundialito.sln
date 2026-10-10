@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{44EDFE7A-22CA-479C-9411-E47E110A4B5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundialito.Domain", "src\Mundialito.Domain\Mundialito.Domain.csproj", "{645175FF-94C6-4327-9920-9DF75E9C5973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundialito.Application", "src\Mundialito.Application\Mundialito.Application.csproj", "{1FB372F7-15B2-4432-91A1-3E74D5B27397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundialito.Infrastructure", "src\Mundialito.Infrastructure\Mundialito.Infrastructure.csproj", "{14440F67-5A5D-4310-807A-74802CE68809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundialito.Api", "src\Mundialito.Api\Mundialito.Api.csproj", "{21A92D5C-8A37-4A7D-86FC-C353697FD00D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mundialito.UnitTests", "tests\Mundialito.UnitTests\Mundialito.UnitTests.csproj", "{F65C3F0E-C188-4417-8E6F-8AF201F951BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{645175FF-94C6-4327-9920-9DF75E9C5973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645175FF-94C6-4327-9920-9DF75E9C5973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645175FF-94C6-4327-9920-9DF75E9C5973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645175FF-94C6-4327-9920-9DF75E9C5973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB372F7-15B2-4432-91A1-3E74D5B27397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB372F7-15B2-4432-91A1-3E74D5B27397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB372F7-15B2-4432-91A1-3E74D5B27397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB372F7-15B2-4432-91A1-3E74D5B27397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14440F67-5A5D-4310-807A-74802CE68809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14440F67-5A5D-4310-807A-74802CE68809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14440F67-5A5D-4310-807A-74802CE68809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14440F67-5A5D-4310-807A-74802CE68809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21A92D5C-8A37-4A7D-86FC-C353697FD00D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21A92D5C-8A37-4A7D-86FC-C353697FD00D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21A92D5C-8A37-4A7D-86FC-C353697FD00D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21A92D5C-8A37-4A7D-86FC-C353697FD00D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65C3F0E-C188-4417-8E6F-8AF201F951BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65C3F0E-C188-4417-8E6F-8AF201F951BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65C3F0E-C188-4417-8E6F-8AF201F951BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65C3F0E-C188-4417-8E6F-8AF201F951BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{645175FF-94C6-4327-9920-9DF75E9C5973} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{1FB372F7-15B2-4432-91A1-3E74D5B27397} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{14440F67-5A5D-4310-807A-74802CE68809} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{21A92D5C-8A37-4A7D-86FC-C353697FD00D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F65C3F0E-C188-4417-8E6F-8AF201F951BB} = {44EDFE7A-22CA-479C-9411-E47E110A4B5E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02C87EAD-3242-451D-A3F5-1FA66B4469E6}
+	EndGlobalSection
+EndGlobal
