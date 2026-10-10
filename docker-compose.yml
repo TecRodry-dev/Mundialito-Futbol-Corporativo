@@ -21,5 +21,34 @@ services:
       start_period: 30s
     restart: unless-stopped
 
+  api:
+    build:
+      context: ./backend
+      dockerfile: src/Mundialito.Api/Dockerfile
+    container_name: mundialito-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      # Se arma con la misma contraseña de la BD: un solo lugar donde definirla (.env).
+      ConnectionStrings__DefaultConnection: "Server=db,1433;Database=Mundialito;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True"
+    ports:
+      - "${API_PORT:-8080}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # URL que usa el NAVEGADOR para llamar a la API (por eso localhost y no "api").
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
+    container_name: mundialito-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
 volumes:
   mssql-data:

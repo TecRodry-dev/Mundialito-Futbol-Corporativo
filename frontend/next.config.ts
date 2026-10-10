@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Genera .next/standalone con lo mínimo para correr en Docker (node server.js).
+  output: "standalone",
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
