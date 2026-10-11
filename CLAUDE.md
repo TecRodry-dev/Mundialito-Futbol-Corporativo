@@ -28,7 +28,9 @@ El enunciado completo está en @docs/ENUNCIADO.md — es la fuente de verdad. Si
   - `Team`: `Name` (único), `Coach`.
   - `Player`: `TeamId`, `FullName`, `ShirtNumber` (único por equipo), `Position` (Goalkeeper/Defender/Midfielder/Forward).
   - `Match`: `HomeTeamId`, `AwayTeamId` (distintos), `ScheduledAt`, `Venue` (opcional), `Status` (Scheduled/Played), `HomeGoals`/`AwayGoals` (null hasta jugarse).
-  - `Goal`: `MatchId`, `PlayerId`, `Minute` (opcional). Los goles de cada equipo deben cuadrar con el marcador.
+  - `Goal`: `MatchId`, `PlayerId`, `TeamId`, `Minute` (opcional, 1–120). Los goles de cada equipo deben cuadrar con el marcador; no se contemplan autogoles.
+  - Agregados: `Team` (con sus `Player`, que solo se crean con `team.AddPlayer`) y `Match` (con sus `Goal`, que solo se crean con `match.RegisterResult`).
+  - Reglas de la tabla en `Domain/Standings` (`StandingRules`, `StandingsCalculator`, con tests). La consulta Dapper de la tabla debe usar las constantes de `StandingRules` como parámetros y el mismo orden.
   - `IdempotencyRecord`: `Key`, `RequestHash`, `StatusCode`, `ResponseBody`, `CreatedAt`.
   - La tabla de posiciones NO es tabla: se calcula con Dapper desde los partidos jugados.
 - **Convención de idioma:** código (clases, métodos, propiedades) en inglés; mensajes al usuario, comentarios y commits en español.
