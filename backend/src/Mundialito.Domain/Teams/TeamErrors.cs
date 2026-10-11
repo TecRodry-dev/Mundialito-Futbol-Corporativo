@@ -24,4 +24,7 @@ public static class TeamErrors
 
     public static readonly Error NameAlreadyExists = Error.Conflict(
         "Ya existe un equipo con ese nombre.", "Team.NameAlreadyExists");
+
+    public static readonly Error HasMatches = Error.Conflict(
+        "No se puede eliminar un equipo que tiene partidos registrados.", "Team.HasMatches");
 }
