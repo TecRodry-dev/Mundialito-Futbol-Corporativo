@@ -5,14 +5,14 @@ namespace Mundialito.Application.Abstractions.Idempotency;
 /// </summary>
 public sealed class IdempotencyRecord
 {
-    public required string Key { get; init; }
+    public string Key { get; init; } = string.Empty;
 
     /// <summary>Huella del request (método + ruta + body) para detectar la misma key con otro payload.</summary>
-    public required string RequestHash { get; init; }
+    public string RequestHash { get; init; } = string.Empty;
 
-    public required int StatusCode { get; init; }
+    public int StatusCode { get; init; }
 
-    public required string ResponseBody { get; init; }
+    public string ResponseBody { get; init; } = string.Empty;
 
-    public required DateTime CreatedAtUtc { get; init; }
+    public DateTime CreatedAtUtc { get; init; }
 }
