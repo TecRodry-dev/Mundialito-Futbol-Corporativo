@@ -1,6 +1,23 @@
-@Mundialito.Api_HostAddress = http://localhost:5062
+@Api = http://localhost:8080
 
-GET {{Mundialito.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Tabla de posiciones (orden oficial)
+GET {{Api}}/api/standings
 
-###
+### Goleadores
+GET {{Api}}/api/top-scorers
+
+### Equipos paginados y ordenados
+GET {{Api}}/api/teams?pageNumber=1&pageSize=10&sortBy=name&sortDirection=desc
+
+### Crear equipo (repetir con la misma key devuelve la misma respuesta)
+POST {{Api}}/api/teams
+Content-Type: application/json
+Idempotency-Key: 6f1c2a4e-0000-4000-8000-000000000001
+
+{
+  "name": "Marketing FC",
+  "coach": "Paula Ríos"
+}
+
+### Partidos jugados
+GET {{Api}}/api/matches?status=Played

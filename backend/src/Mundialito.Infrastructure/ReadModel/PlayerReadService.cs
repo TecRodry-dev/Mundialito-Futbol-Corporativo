@@ -15,9 +15,17 @@ internal sealed class PlayerReadService(SqlConnectionFactory connectionFactory) 
         ["goals"] = "Goals"
     };
 
-    private const string FromAndFilters = """
+    private const string SelectColumns = """
+        p.Id, p.TeamId, t.Name AS TeamName, p.FullName, p.ShirtNumber, p.Position, p.CreatedAtUtc,
+        (SELECT COUNT(*) FROM Goals g WHERE g.PlayerId = p.Id) AS Goals
+        """;
+
+    private const string FromPlayers = """
         FROM Players p
         INNER JOIN Teams t ON t.Id = p.TeamId
+        """;
+
+    private const string Filters = """
         WHERE (@TeamId IS NULL OR p.TeamId = @TeamId)
           AND (@Name IS NULL OR p.FullName LIKE @Name)
           AND (@Position IS NULL OR p.Position = @Position)
@@ -28,11 +36,11 @@ internal sealed class PlayerReadService(SqlConnectionFactory connectionFactory) 
         var orderBy = SqlSorting.BuildOrderBy(query.Paging, SortColumns, "t.Name ASC, p.ShirtNumber ASC", "p.Id");
 
         var sql = $"""
-            SELECT COUNT(*) {FromAndFilters};
+            SELECT COUNT(*) {FromPlayers} {Filters};
 
-            SELECT p.Id, p.TeamId, t.Name AS TeamName, p.FullName, p.ShirtNumber, p.Position, p.CreatedAtUtc,
-                   (SELECT COUNT(*) FROM Goals g WHERE g.PlayerId = p.Id) AS Goals
-            {FromAndFilters}
+            SELECT {SelectColumns}
+            {FromPlayers}
+            {Filters}
             ORDER BY {orderBy}
             OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY;
             """;
@@ -54,5 +62,15 @@ internal sealed class PlayerReadService(SqlConnectionFactory connectionFactory) 
         var players = (await results.ReadAsync<PlayerResponse>()).AsList();
 
         return new PagedResult<PlayerResponse>(players, query.Paging.PageNumber, query.Paging.PageSize, totalRecords);
+    }
+
+    public async Task<PlayerResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var sql = $"SELECT {SelectColumns} {FromPlayers} WHERE p.Id = @Id;";
+
+        await using var connection = connectionFactory.Create();
+
+        return await connection.QuerySingleOrDefaultAsync<PlayerResponse>(
+            new CommandDefinition(sql, new { Id = id }, cancellationToken: cancellationToken));
     }
 }

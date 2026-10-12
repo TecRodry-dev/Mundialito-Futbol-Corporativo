@@ -8,4 +8,6 @@ namespace Mundialito.Application.Players;
 public interface IPlayerReadService
 {
     Task<PagedResult<PlayerResponse>> GetPlayersAsync(GetPlayersQuery query, CancellationToken cancellationToken);
+
+    Task<PlayerResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 }
